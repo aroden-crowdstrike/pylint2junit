@@ -1,0 +1,32 @@
+************* Module pylint2junit.tojunit
+pylint2junit/tojunit.py:1:0: C0111: Missing module docstring (missing-docstring)
+pylint2junit/tojunit.py:24:12: I1101: Module 'lxml.etree' has no 'Element' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+pylint2junit/tojunit.py:36:12: I1101: Module 'lxml.etree' has no 'SubElement' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+pylint2junit/tojunit.py:40:4: I1101: Module 'lxml.etree' has no 'SubElement' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+pylint2junit/tojunit.py:46:4: I1101: Module 'lxml.etree' has no 'SubElement' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+pylint2junit/tojunit.py:58:63: I1101: Module 'lxml.etree' has no 'tostring' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+pylint2junit/tojunit.py:65:0: C0103: Function name "module_errors_to_junit_test_case" doesn't conform to snake_case naming style (invalid-name)
+pylint2junit/tojunit.py:75:16: I1101: Module 'lxml.etree' has no 'SubElement' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+pylint2junit/tojunit.py:82:14: I1101: Module 'lxml.etree' has no 'SubElement' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+************* Module pylint2junit.parse
+pylint2junit/parse.py:1:0: C0111: Missing module docstring (missing-docstring)
+pylint2junit/parse.py:20:0: C0103: Constant name "_module_re" doesn't conform to UPPER_CASE naming style (invalid-name)
+pylint2junit/parse.py:76:0: C0103: Constant name "_fancy_re" doesn't conform to UPPER_CASE naming style (invalid-name)
+************* Module pylint2junit.__main__
+pylint2junit/__main__.py:1:0: C0111: Missing module docstring (missing-docstring)
+pylint2junit/__main__.py:24:0: C0111: Missing function docstring (missing-docstring)
+pylint2junit/__main__.py:41:35: C0103: Variable name "f" doesn't conform to snake_case naming style (invalid-name)
+pylint2junit/__main__.py:46:36: C0103: Variable name "f" doesn't conform to snake_case naming style (invalid-name)
+************* Module tests.test_tojunit
+tests/test_tojunit.py:28:0: C0301: Line too long (131/100) (line-too-long)
+tests/test_tojunit.py:1:0: C0111: Missing module docstring (missing-docstring)
+tests/test_tojunit.py:10:0: C0111: Missing class docstring (missing-docstring)
+tests/test_tojunit.py:11:4: C0103: Method name "test_smallPyLint_expectedOutput" doesn't conform to snake_case naming style (invalid-name)
+tests/test_tojunit.py:11:4: C0111: Missing method docstring (missing-docstring)
+tests/test_tojunit.py:17:8: W1505: Using deprecated method assertEquals() (deprecated-method)
+tests/test_tojunit.py:19:4: C0103: Method name "test_defaultPyLint_noError" doesn't conform to snake_case naming style (invalid-name)
+tests/test_tojunit.py:19:4: C0111: Missing method docstring (missing-docstring)
+
+-------------------------------------------------------------------
+Your code has been rated at 8.00/10 (previous run: 10.00/10, -2.00)
+
