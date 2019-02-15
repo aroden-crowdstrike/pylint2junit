@@ -11,7 +11,7 @@ from pylint.reporters import BaseReporter
 
 from pylint2junit import junit_types
 from pylint2junit.tojunit import pylint_to_junit
-
+from datetime import datetime
 
 class _KeyDefaultDict(collections.defaultdict):
     def __init__(self, missing_function):
@@ -64,6 +64,16 @@ class JunitReporter(BaseReporter):
         """
         if self._messages:
             print(pylint_to_junit(self._messages.values()), file=self.out)
+        else:
+            ts = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+            empty_results = """
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite errors="0" failures="0" name="pylint" skipped="0" tests="0" time="0.000" timestamp="{0}">
+  </testsuite>
+</testsuites>
+            """.format(ts)
+            print(empty_results, file=self.out)
 
     def display_reports(self, _layout):
         """
