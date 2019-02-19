@@ -20,3 +20,15 @@ Conversion script
 
     pylint --output-format=parseable example > pylint_results.txt
     pylint2junit --input=pylint_results.txt --output=pylint_results.txt
+
+
+Building
+--------
+
+Validate no pylint problem
+
+     pylint pylint2junit tests
+
+Build
+
+    python setup.py bdsit_wheel
