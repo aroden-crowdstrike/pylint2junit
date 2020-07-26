@@ -66,6 +66,8 @@ def parse_input_lines(pylint_lines):
         yield cur_module
 
 
+# Warning: This re looks like it is missing '\(' between msg_id and symbol
+# Warning: This re seems to have no test coverage
 _PARSABLE_RE = re.compile(
     r'^(?P<path>[\w/.]+)'
     r':(?P<line>\d+)'
@@ -73,7 +75,8 @@ _PARSABLE_RE = re.compile(
     r' (?P<message>.*)'
 )
 
-_TEXT_RE = re.compile(
+# pylint2junit/tojunit.py:1:0: C0111: Missing module docstring (missing-docstring)
+_TEXT_RE_1 = re.compile(
     r'^(?P<path>[\w/.]+)'
     r':(?P<line>\d+)'
     r':(?P<column>\d+)'
@@ -82,13 +85,36 @@ _TEXT_RE = re.compile(
     r'\((?P<symbol>[^)]*)\)'
 )
 
+# pylint2junit/tojunit.py:1:0: [C0114(missing-module-docstring), ] Missing module docstring
+_TEXT_RE_2 = re.compile(
+    r'^(?P<path>[\w/.]+)'
+    r':(?P<line>\d+)'
+    r':(?P<column>\d+)'
+    r': \[(?P<msg_id>[^(]*)'
+    r'\((?P<symbol>[^)]*)'
+    r'\), \] (?P<message>.*)'
+)
+
+# setup.py:1: [C0114(missing-module-docstring), ] Missing module docstring
+_TEXT_RE_3 = re.compile(
+    r'^(?P<path>[\w/.]+)'
+    r':(?P<line>\d+)'
+    r': \[(?P<msg_id>[^(]*)'
+    r'\((?P<symbol>[^)]*)'
+    r'\), \] (?P<message>.*)'
+)
+
 
 def _lines_to_pylint(lines):
-    match = _PARSABLE_RE.search(lines[0])
+    match = _TEXT_RE_3.search(lines[0])
     if not match:
-        match = _TEXT_RE.search(lines[0])
+        match = _PARSABLE_RE.search(lines[0])
     if not match:
-        raise NotImplementedError("Undetected format")
+        match = _TEXT_RE_1.search(lines[0])
+    if not match:
+        match = _TEXT_RE_2.search(lines[0])
+    if not match:
+        raise NotImplementedError('_lines_to_pylint: "%s"' % (lines[0]))
     path = match.group('path')
     line = match.group('line')
     msg_id = match.group('msg_id')
