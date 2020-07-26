@@ -1,4 +1,7 @@
+************* Module setup
+setup.py:1: [C0114(missing-module-docstring), ] Missing module docstring
 ************* Module pylint2junit.tojunit
+pylint2junit/tojunit.py:1:0: [C0114(missing-module-docstring), ] Missing module docstring
 pylint2junit/tojunit.py:1:0: C0111: Missing module docstring (missing-docstring)
 pylint2junit/tojunit.py:24:12: I1101: Module 'lxml.etree' has no 'Element' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
 pylint2junit/tojunit.py:36:12: I1101: Module 'lxml.etree' has no 'SubElement' member, but source is unavailable. Consider adding this module to extension-pkg-whitelist if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
