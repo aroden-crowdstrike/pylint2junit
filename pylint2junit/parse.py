@@ -7,7 +7,12 @@ from pylint2junit.junit_types import ModuleErrors, PyLintError
 
 _MODULE_RE = re.compile(r'^\*{13} Module ([\w.]+)')
 
-_REPORT_RE = re.compile(r'^-{67}')
+# -------------------------------------------------------------------
+# Your code has been rated at 8.00/10 (previous run: 10.00/10, -2.00)
+# _REPORT_RE = re.compile(r'^-{67}')
+# -----------------------------------
+# Your code has been rated at 9.47/10
+_REPORT_RE = re.compile(r'^-{35}')
 
 
 def parse_input_lines(pylint_lines):
@@ -29,7 +34,7 @@ def parse_input_lines(pylint_lines):
         # once report section is hit; bail
         if _REPORT_RE.search(line):
             break
-        # look fo a new module
+        # look for a new module
         module = _MODULE_RE.search(line)
         if module:
             # yield current
@@ -58,7 +63,7 @@ def parse_input_lines(pylint_lines):
                 cur_line_list = list()
                 cur_line_list.append(line)
         else:
-            raise NotImplementedError()
+            raise NotImplementedError('parse_input_lines: "%s" (cur_module: "%s")' % (line, cur_module))
     if cur_module and cur_line_list:
         cur_module.pylint_error_list.append(
             _lines_to_pylint(cur_line_list)
