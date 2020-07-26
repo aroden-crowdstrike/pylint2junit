@@ -52,7 +52,7 @@ def pylint_to_junit(modules):
         _module_errors_to_junit_test_case(module_error, suite)
 
     # write completed xml output
-    return u'<?xml version="1.0" encoding="UTF-8" ?>{}'.format(ET.tostring(
+    return u'<?xml version="1.0" encoding="UTF-8" ?>{}\n'.format(ET.tostring(
         suite,
         encoding="utf-8",
         method="xml",
